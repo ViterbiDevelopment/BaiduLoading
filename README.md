@@ -1,9 +1,6 @@
 # BaiduLoading
 一款仿照百度加载的动画
 
-![image](https://github.com/ViterbiDevelopment/BaiduLoading/blob/master/loadingAnimation/example.gif)
-
-
 ### 添加到window视图
 
 ```objc
@@ -48,3 +45,7 @@
 }
 @end
 ```
+### 效果如下
+![image](https://github.com/ViterbiDevelopment/BaiduLoading/blob/master/loadingAnimation/example.gif)
+
+
