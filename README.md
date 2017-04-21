@@ -1,4 +1,8 @@
 # BaiduLoading
+一款仿照百度加载的动画
+
+### 效果如下
+![image](https://github.com/ViterbiDevelopment/PhotoWithSwift/blob/master/PhotoKit/PhotoKit/2.gif)
 
 
 ### 添加到window视图
