@@ -1,7 +1,6 @@
 # BaiduLoading
 一款仿照百度加载的动画
 
-### 效果如下
 ![image](https://github.com/ViterbiDevelopment/BaiduLoading/blob/master/loadingAnimation/example.gif)
 
 
