@@ -42,8 +42,8 @@
 
 
 -(instancetype)initWithFrame:(CGRect)frame{
-
-
+    
+    
     if (self = [super initWithFrame:frame]) {
         
         
@@ -53,33 +53,33 @@
         _toRight = YES;
         
         
-    
+        
         _threeColors = [[NSMutableArray alloc] initWithObjects:[UIColor redColor],[UIColor blackColor],[UIColor blueColor], nil];
         
-        _oneLable = [self createLableWithFrame:CGRectMake(0, 0, 20, 20) adnColor:[UIColor redColor]];
+        _oneLable = [self createLableWithFrame:CGRectMake(0, 0, 20, 20) adnColor:_threeColors.firstObject];
         [self addSubview:_oneLable];
         
         
-        _twoLable = [self createLableWithFrame:CGRectMake(40, 0, 20, 20) adnColor:[UIColor blackColor]];
+        _twoLable = [self createLableWithFrame:CGRectMake(40, 0, 20, 20) adnColor:_threeColors[1]];
         [self addSubview:_twoLable];
         
-        _threeLable = [self createLableWithFrame:CGRectMake(80, 0, 20, 20) adnColor:[UIColor blueColor]];
+        _threeLable = [self createLableWithFrame:CGRectMake(80, 0, 20, 20) adnColor:_threeColors[2]];
         
         [self addSubview:_threeLable];
         
         
-      
+        
         
     }
-
+    
     return self;
-
+    
 }
 
 +(void)showLoadingViewInView:(UIView *)view{
-
     
-    loadingView *selfLoad = [[loadingView alloc] initWithFrame:CGRectMake(0, 0, 100, 30)];
+    
+    loadingView *selfLoad = [[loadingView alloc] initWithFrame:CGRectMake(0, 0, 100, 20)];
     
     
     selfLoad.center = view.center;
@@ -88,16 +88,16 @@
     
     [selfLoad began];
     
-
-   
-
-
+    
+    
+    
+    
 }
 
 +(void)beginAnimation{
     
-
-    UIView *topView = [UIApplication sharedApplication].windows.lastObject;
+    
+    UIView *topView = [UIApplication sharedApplication].keyWindow;
     
     [self showLoadingViewInView:topView];
     
@@ -105,15 +105,15 @@
 }
 
 +(void)stopAnimation{
-
     
     
-     UIView *topView = [UIApplication sharedApplication].windows.lastObject;
+    
+    UIView *topView = [UIApplication sharedApplication].keyWindow;
     
     [self removeViewInnView:topView];
     
-
-
+    
+    
 }
 
 
@@ -134,11 +134,11 @@
         
         return;
     }
-
+    
     
     for (UIView *subviews in view.subviews) {
         
-      
+        
         if (subviews.subviews.count > 0) {
             
             [self removeViewInnView:subviews];
@@ -146,14 +146,14 @@
         
         
     }
-
     
-
+    
+    
 }
 
 
 -(void)began{
-
+    
     
     
     self.displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(changeFameAndColor)];
@@ -164,14 +164,14 @@
 }
 
 -(void)stop{
-
+    
     self.displayLink.paused = YES;
     
     [self.displayLink removeFromRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
     
     //_stance.hidden = YES;
     
-
+    
     
     
 }
@@ -189,13 +189,13 @@
         _oneLable.frame = CGRectMake(_count*2 , 0, 20, 20);
         _threeLable.frame = CGRectMake(80 - _count*2, 0, 20, 20);
         [self changeColor];
-    
+        
     }
     else{
-    
+        
         _count = _count - 1;
         _oneLable.frame = CGRectMake(80 + _count*2, 0, 20, 20);
-         _threeLable.frame = CGRectMake(- _count*2, 0, 20, 20);
+        _threeLable.frame = CGRectMake(- _count*2, 0, 20, 20);
         
         [self changeColor];
         
@@ -220,19 +220,19 @@
 }
 
 -(void)changeColor{
-
+    
     if (_oneLable.center.x == _threeLable.center.x) {
         
         /*
-        红 黑 蓝
-        蓝 红 黑
-        黑 蓝 红
+         红 黑 蓝
+         蓝 红 黑
+         黑 蓝 红
          */
         UIColor *first = _threeColors.firstObject;
         UIColor *second = _threeColors[1];
         UIColor *last = _threeColors.lastObject;
         
-       
+        
         _threeColors[0] = last;
         _threeColors[1] = first;
         _threeColors[2] = second;
@@ -240,55 +240,31 @@
         _twoLable.backgroundColor = _threeColors[1];
         _threeLable.backgroundColor = _threeColors[2];
         
-    
+        
         
     }
-
-   
-
-
+    
+    
+    
+    
 }
 
-+ (UIViewController *)presentingVC{
-    UIWindow * window = [[UIApplication sharedApplication] keyWindow];
-    if (window.windowLevel != UIWindowLevelNormal){
-        NSArray *windows = [[UIApplication sharedApplication] windows];
-        for(UIWindow * tmpWin in windows){
-            if (tmpWin.windowLevel == UIWindowLevelNormal){
-                window = tmpWin;
-                break;
-            }
-        }
-    }
-    UIViewController *result = window.rootViewController;
-    while (result.presentedViewController) {
-        result = result.presentedViewController;
-    }
-    if ([result isKindOfClass:[UITabBarController class]]) {
-        result = [(UITabBarController *)result selectedViewController];
-    }
-    if ([result isKindOfClass:[UINavigationController class]]) {
-        result = [(UINavigationController *)result topViewController];
-    }
-    return result;
-}
+
 
 -(UILabel *)createLableWithFrame:(CGRect)frame adnColor:(UIColor *)color{
-
-
-    UILabel *lable = [[UILabel alloc] initWithFrame:frame];
     
+    
+    UILabel *lable = [[UILabel alloc] initWithFrame:frame];
     lable.backgroundColor = color;
     
+    UIBezierPath * maskPath = [UIBezierPath bezierPathWithRoundedRect:lable.bounds byRoundingCorners:UIRectCornerAllCorners cornerRadii:lable.bounds.size];
+    CAShapeLayer * maskLayer = [[CAShapeLayer alloc]init];
+    maskLayer.frame = lable.bounds;
+    maskLayer.path = maskPath.CGPath;
+    lable.layer.mask = maskLayer;
     
-    lable.layer.cornerRadius = lable.frame.size.width/2.0;
-    
-    lable.layer.masksToBounds = YES;
-    
-    //[self addSubview:lable];
-
     return lable;
-
+    
 }
 
 
