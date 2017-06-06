@@ -82,7 +82,7 @@
     loadingView *selfLoad = [[loadingView alloc] initWithFrame:CGRectMake(0, 0, 100, 20)];
     
     
-    selfLoad.center = view.center;
+    selfLoad.center = CGPointMake(view.frame.size.width/2.0, view.frame.size.height/2.0);
     
     [view addSubview:selfLoad];
     
