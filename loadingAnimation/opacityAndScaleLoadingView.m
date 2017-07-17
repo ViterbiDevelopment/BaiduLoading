@@ -18,31 +18,34 @@
 
     if (self = [super initWithFrame:frame]) {
         
-        //        //修改bounds，方便计算弧度
-        self.bounds = CGRectMake(-self.frame.size.width/2.0, -self.frame.size.height/2.0, self.frame.size.width, self.frame.size.height);
+        
+        self.backgroundColor = [UIColor whiteColor];
         
         
+        CAKeyframeAnimation *animations = [self createBasic];
+        
+       
         for (int i = 0; i<8; i++) {
             
             
             CALayer *subLayer = [self createLayerWithSize:CGSizeMake(20, 20) andColor:[UIColor redColor]];
             
-          //  subLayer.anchorPoint = CGPointMake(1, 0.5);
+            CGFloat size = 20;
             
-        
-            CGFloat initAngle = atan(10.0/(self.frame.size.width/2.0 - 20));
+            CGPoint origin= CGPointMake(0, 0);
             
-
+            CGFloat radius = self.frame.size.width/2.0;
             
-
-            CGFloat angle = -initAngle ;
-            
-            CGFloat x = cos(angle) * (frame.size.width/2.0 - 10) * cos(angle);
-            
-            CGFloat y = sin(angle) *(frame.size.width/2.0-10)*cos(angle);
+            CGFloat angle = M_PI_4 * i ;
             
             
-            subLayer.frame = CGRectMake(x, y, 20, 20);
+            subLayer.frame = CGRectMake(origin.x+radius*(cos(angle)+1)-size/2, origin.y+radius*(sin(angle)+1)-size/2, size, size);
+            
+            ;
+            
+            animations.beginTime = 0.5*i;
+            
+            [subLayer addAnimation:animations forKey:nil];
             
             
             [self.layer addSublayer:subLayer];
@@ -59,50 +62,34 @@
 
 }
 
+-(CAKeyframeAnimation *)createBasic{
+    
+    
+    CAKeyframeAnimation *anmation = [CAKeyframeAnimation animationWithKeyPath:@"opacity"];
+    
+    anmation.autoreverses = YES;
+    
+    anmation.duration = 4;
+    
+    anmation.keyTimes = @[@(0),@(0.5),@(1)];
+    anmation.values = @[@(1),@(0.2),@(1)];
+    
+    
+    anmation.repeatCount = LONG_LONG_MAX;
+    
+    
+    //anmation.repeatDuration = 2;
+    anmation.removedOnCompletion = NO;
+    anmation.fillMode = kCAFillModeForwards;
+    
+    return anmation;
+    
+    
+}
+
+
 -(void)drawRect:(CGRect)rect{
     
-    
-    for (int i = 0; i<8; i++) {
-        
-        if (i != 0) {
-            
-            return;
-        }
-        
-        CGFloat initAngle = atan(10.0/(self.frame.size.width/2.0 - 20));
-        
-        
-        
-        CGFloat angle = -initAngle ;
-        
-        CGFloat x = cos(angle) * (self.frame.size.width/2.0 - 10) * cos(angle);
-        
-        CGFloat y = sin(angle) *(self.frame.size.width/2.0-10)*cos(angle);
-        
-
-        
-        
-        CGContextRef context = UIGraphicsGetCurrentContext();
-        CGContextSetLineCap(context, kCGLineCapRound);
-        CGContextSetLineWidth(context, 0.5);  //线宽
-        CGContextSetAllowsAntialiasing(context, true);
-        CGContextSetRGBStrokeColor(context, 70.0 / 255.0, 241.0 / 255.0, 241.0 / 255.0, 1.0);  //线的颜色
-        
-        
-        
-        CGContextBeginPath(context);
-        
-        CGContextMoveToPoint(context, 0, 0);  //起点坐标
-        CGContextAddLineToPoint(context,x, y);   //终点坐标
-        
-        CGContextStrokePath(context);
-        
-    }
-
-    
-  
-
-
     
     
    
@@ -138,7 +125,7 @@
     
     
 
-    opacityAndScaleLoadingView *subview = [[opacityAndScaleLoadingView alloc] initWithFrame:CGRectMake(0, 0, 200, 200)];
+    opacityAndScaleLoadingView *subview = [[opacityAndScaleLoadingView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
     
     [contanView addSubview:subview];
     
