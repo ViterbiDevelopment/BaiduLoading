@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		371B8F061EAA13B9008C1F96 /* example.gif in Resources */ = {isa = PBXBuildFile; fileRef = 371B8F051EAA13B9008C1F96 /* example.gif */; };
+		3759BB3F1F1CBC1F00669E97 /* opacityAndScaleLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3759BB3E1F1CBC1F00669E97 /* opacityAndScaleLoadingView.m */; };
 		37CB42AA1EE650A7004D1BAC /* BezierLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 37CB42A91EE650A7004D1BAC /* BezierLoadingView.m */; };
 		37CB42AD1EE65193004D1BAC /* ShadingLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 37CB42AC1EE65193004D1BAC /* ShadingLoadingView.m */; };
 		37D8ECB81EA8572B0035C3A0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 37D8ECB71EA8572B0035C3A0 /* main.m */; };
@@ -41,6 +42,8 @@
 
 /* Begin PBXFileReference section */
 		371B8F051EAA13B9008C1F96 /* example.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = example.gif; sourceTree = "<group>"; };
+		3759BB3D1F1CBC1F00669E97 /* opacityAndScaleLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = opacityAndScaleLoadingView.h; sourceTree = "<group>"; };
+		3759BB3E1F1CBC1F00669E97 /* opacityAndScaleLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = opacityAndScaleLoadingView.m; sourceTree = "<group>"; };
 		37CB42A81EE650A7004D1BAC /* BezierLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BezierLoadingView.h; sourceTree = "<group>"; };
 		37CB42A91EE650A7004D1BAC /* BezierLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BezierLoadingView.m; sourceTree = "<group>"; };
 		37CB42AB1EE65193004D1BAC /* ShadingLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShadingLoadingView.h; sourceTree = "<group>"; };
@@ -128,6 +131,8 @@
 				37CB42A91EE650A7004D1BAC /* BezierLoadingView.m */,
 				37CB42AB1EE65193004D1BAC /* ShadingLoadingView.h */,
 				37CB42AC1EE65193004D1BAC /* ShadingLoadingView.m */,
+				3759BB3D1F1CBC1F00669E97 /* opacityAndScaleLoadingView.h */,
+				3759BB3E1F1CBC1F00669E97 /* opacityAndScaleLoadingView.m */,
 				37D8ECBF1EA8572B0035C3A0 /* Main.storyboard */,
 				37D8ECC21EA8572B0035C3A0 /* Assets.xcassets */,
 				37D8ECC41EA8572B0035C3A0 /* LaunchScreen.storyboard */,
@@ -301,6 +306,7 @@
 				37D8ECBE1EA8572B0035C3A0 /* ViewController.m in Sources */,
 				37D8ECEB1EA8575B0035C3A0 /* loadingView.m in Sources */,
 				37CB42AA1EE650A7004D1BAC /* BezierLoadingView.m in Sources */,
+				3759BB3F1F1CBC1F00669E97 /* opacityAndScaleLoadingView.m in Sources */,
 				37D8ECEE1EA8AC2B0035C3A0 /* pussVC.m in Sources */,
 				37D8ECBB1EA8572B0035C3A0 /* AppDelegate.m in Sources */,
 				37D8ECB81EA8572B0035C3A0 /* main.m in Sources */,

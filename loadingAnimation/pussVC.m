@@ -9,6 +9,8 @@
 #import "pussVC.h"
 #import "loadingView.h"
 #import "ShadingLoadingView.h"
+#import "opacityAndScaleLoadingView.h"
+
 
 
 
@@ -25,7 +27,7 @@
     self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
     
     
-    UIView *loadgingBgView = [[UIView alloc] initWithFrame:CGRectMake(100, 100, 200, 200)];
+    UIView *loadgingBgView = [[UIView alloc] initWithFrame:CGRectMake(100, 64, 200, 100)];
     
     [loadingView showLoadingViewInView:loadgingBgView];
     
@@ -49,7 +51,7 @@
     
     
     
-    UIView *ShadingLoadingBGView = [[UIView alloc] initWithFrame:CGRectMake(100, 300, 200, 200)];
+    UIView *ShadingLoadingBGView = [[UIView alloc] initWithFrame:CGRectMake(100, 164, 200, 100)];
     
     [ShadingLoadingView showLoadingViewInView:ShadingLoadingBGView];
     
@@ -70,7 +72,16 @@
      */
     
     
+    UIView *opacityAndScaleBgView = [[UIView alloc] initWithFrame:CGRectMake(100, 264, 200, 200)];
     
+    
+    opacityAndScaleBgView.backgroundColor = [UIColor greenColor];
+    
+    
+    
+    [opacityAndScaleLoadingView beginiAnimationWithSuperView:opacityAndScaleBgView];
+    
+    [self.view addSubview:opacityAndScaleBgView];
     
     
 }
