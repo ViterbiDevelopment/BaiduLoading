@@ -19,10 +19,13 @@
     if (self = [super initWithFrame:frame]) {
         
         
-        self.backgroundColor = [UIColor whiteColor];
+        self.backgroundColor = [UIColor clearColor];
         
         
         CAKeyframeAnimation *animations = [self createBasic];
+        
+        
+        CFTimeInterval currentTime = CACurrentMediaTime();
         
        
         for (int i = 0; i<8; i++) {
@@ -36,21 +39,26 @@
             
             CGFloat radius = self.frame.size.width/2.0;
             
-            CGFloat angle = M_PI_4 * i ;
+            CGFloat angle = M_PI_4*i  ;
             
             
             subLayer.frame = CGRectMake(origin.x+radius*(cos(angle)+1)-size/2, origin.y+radius*(sin(angle)+1)-size/2, size, size);
             
             ;
             
-            animations.beginTime = 0.5*i;
+
+            animations.beginTime = 0.2*i + currentTime;
             
-            [subLayer addAnimation:animations forKey:nil];
+        
+          [subLayer addAnimation:animations forKey:nil];
+        
+    
+
             
             
             [self.layer addSublayer:subLayer];
             
-        }
+    }
 
         
         
@@ -69,10 +77,10 @@
     
     anmation.autoreverses = YES;
     
-    anmation.duration = 4;
+    anmation.duration = 1.6;
     
     anmation.keyTimes = @[@(0),@(0.5),@(1)];
-    anmation.values = @[@(1),@(0.2),@(1)];
+    anmation.values = @[@(1),@(0.1),@(1)];
     
     
     anmation.repeatCount = LONG_LONG_MAX;
@@ -131,6 +139,26 @@
     
     
     
+
+
+}
+
+
++(void)stopAnimationWithSuperView:(UIView *)contanView{
+
+
+    for (UIView * subview in contanView.subviews) {
+        
+        
+        if ([subview isKindOfClass:[opacityAndScaleLoadingView class]]) {
+            
+            [subview removeFromSuperview];
+            
+        }
+        
+    }
+
+
 
 
 }

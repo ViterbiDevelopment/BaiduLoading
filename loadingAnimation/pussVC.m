@@ -72,14 +72,21 @@
      */
     
     
-    UIView *opacityAndScaleBgView = [[UIView alloc] initWithFrame:CGRectMake(100, 264, 200, 200)];
-    
-    
-    opacityAndScaleBgView.backgroundColor = [UIColor greenColor];
+    UIView *opacityAndScaleBgView = [[UIView alloc] initWithFrame:CGRectMake(150, 264, 200, 200)];
     
     
     
     [opacityAndScaleLoadingView beginiAnimationWithSuperView:opacityAndScaleBgView];
+    
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        
+        
+        
+        [opacityAndScaleLoadingView stopAnimationWithSuperView:opacityAndScaleBgView];
+        
+        
+    });
     
     [self.view addSubview:opacityAndScaleBgView];
     

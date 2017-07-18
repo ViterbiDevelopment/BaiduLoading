@@ -14,5 +14,7 @@
 
 +(void)beginiAnimationWithSuperView:(UIView *)contanView;
 
++(void)stopAnimationWithSuperView:(UIView *)contanView;
+
 
 @end
