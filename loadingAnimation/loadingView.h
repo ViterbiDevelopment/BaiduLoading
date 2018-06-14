@@ -10,8 +10,6 @@
 
 @interface loadingView : UIView
 
-
-
 +(void)showLoadingViewInView:(UIView *)view;
 
 +(void)beginAnimation;

@@ -11,9 +11,6 @@
 #import "ShadingLoadingView.h"
 #import "opacityAndScaleLoadingView.h"
 
-
-
-
 @interface pussVC ()
 
 @end
@@ -22,10 +19,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    
+  
     self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
-    
     
     UIView *loadgingBgView = [[UIView alloc] initWithFrame:CGRectMake(100, 64, 200, 100)];
     
@@ -47,20 +42,13 @@
      
      */
     
-   
-    
-    
-    
     UIView *ShadingLoadingBGView = [[UIView alloc] initWithFrame:CGRectMake(100, 164, 200, 100)];
-    
     [ShadingLoadingView showLoadingViewInView:ShadingLoadingBGView];
-    
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        
+
         [ShadingLoadingView stopAnimation];
     });
-    
-    
+  
     [self.view addSubview:ShadingLoadingBGView];
     
     /*
@@ -73,24 +61,16 @@
     
     
     UIView *opacityAndScaleBgView = [[UIView alloc] initWithFrame:CGRectMake(150, 264, 200, 200)];
-    
-    
-    
+  
     [opacityAndScaleLoadingView beginiAnimationWithSuperView:opacityAndScaleBgView];
-    
-    
+  
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        
-        
-        
+      
         [opacityAndScaleLoadingView stopAnimationWithSuperView:opacityAndScaleBgView];
-        
-        
     });
     
     [self.view addSubview:opacityAndScaleBgView];
-    
-    
+  
 }
 
 

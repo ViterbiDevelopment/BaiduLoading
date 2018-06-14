@@ -19,26 +19,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    
-    
-    
-
     self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
-    
-  
 }
-
-
 
 - (IBAction)pushClick:(UIButton *)sender {
     
     pussVC *vc = [[pussVC alloc] init];
-    
-    
     [self.navigationController pushViewController:vc animated:YES];
-    
-    
 }
 
 

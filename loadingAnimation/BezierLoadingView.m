@@ -43,9 +43,6 @@
         self.maskLayer = maskLayer;
         
         [self.layer addSublayer:maskLayer];
-        
-       
-
     }
 
     return self;
